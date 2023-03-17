@@ -62,7 +62,7 @@ jobs:
           TEST_ZABBIX_PASSWORD: zabbix
         run: |
           while true ; do
-            output=$(curl -X POST -H 'Content-Type: application/json-rpc' -d '{"jsonrpc":"2.0","method":"user.login","params":{"user":"'$TEST_ZABBIX_USER'","password":"'$TEST_ZABBIX_PASSWORD'"},"id":1,"auth":null}' $TEST_ZABBIX_URL || echo error)
+            output=$(curl -X POST -H 'Content-Type: application/json-rpc' -d '{"jsonrpc":"2.0","method":"user.login","params":{"username":"'$TEST_ZABBIX_USER'","password":"'$TEST_ZABBIX_PASSWORD'"},"id":1,"auth":null}' $TEST_ZABBIX_URL || echo error)
             echo $output
             echo $output | grep -v error > /dev/null && break
             echo "Waiting 5s for Zabbix Server to be ready..."

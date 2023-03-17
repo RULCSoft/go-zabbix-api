@@ -11,7 +11,7 @@ if ! [[ "$ZABBIX_VERSION" == "$TEST_ZABBIX_VERSION"* ]]; then
 fi
 
 # Check login
-ZABBIX_TOKEN=$(curl -s -X POST -H 'Content-Type: application/json-rpc' -d "{\"jsonrpc\":\"2.0\",\"method\":\"user.login\",\"id\":1,\"params\":{\"user\":\"$TEST_ZABBIX_USER\",\"password\":\"$TEST_ZABBIX_PASSWORD\"}}" "$TEST_ZABBIX_URL" | jq -c -r .result)
+ZABBIX_TOKEN=$(curl -s -X POST -H 'Content-Type: application/json-rpc' -d "{\"jsonrpc\":\"2.0\",\"method\":\"user.login\",\"id\":1,\"params\":{\"username\":\"$TEST_ZABBIX_USER\",\"password\":\"$TEST_ZABBIX_PASSWORD\"}}" "$TEST_ZABBIX_URL" | jq -c -r .result)
 if [[ "$ZABBIX_VERSION" == "null" ]]; then 
     echo "Zabbix login failed"
     exit 2
